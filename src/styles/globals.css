@@ -1,0 +1,524 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ds-font-sans);
+  color: var(--ds-text);
+  background: var(--ds-bg);
+  line-height: var(--ds-leading-normal);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+/* Utilities */
+.ds-container {
+  width: min(100% - 2 * var(--ds-space-4), var(--ds-container));
+  margin-inline: auto;
+}
+
+.ds-card {
+  background: var(--ds-surface);
+  border: 1px solid var(--ds-border);
+  border-radius: var(--ds-radius-md);
+  box-shadow: var(--ds-shadow-1);
+}
+
+.ds-muted {
+  color: var(--ds-text-muted);
+}
+
+.ds-subtle {
+  color: var(--ds-text-subtle);
+}
+
+.ds-divider {
+  height: 1px;
+  background: var(--ds-border);
+}
+
+.ds-code {
+  font-family: var(--ds-font-mono);
+  font-size: 12px;
+}
+
+.ds-grid {
+  display: grid;
+  gap: var(--ds-space-4);
+}
+
+.ds-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ds-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 960px) {
+  .ds-grid-2,
+  .ds-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Focus */
+:where(button, a, input, [tabindex]):focus-visible {
+  outline: 3px solid var(--ds-focus);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* Landing page responsive styles */
+@media (max-width: 768px) {
+  .landing-registration-cards {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .landing-hero > div {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .landing-hero h1 {
+    font-size: var(--ds-text-xl) !important;
+    text-align: center !important;
+  }
+  
+  .landing-hero p {
+    font-size: var(--ds-text-md) !important;
+    text-align: center !important;
+  }
+  
+  .landing-hero > div > div:first-child {
+    text-align: center !important;
+  }
+  
+  .landing-hero > div > div:first-child > div:last-child {
+    justify-content: center !important;
+  }
+}
+
+/* Calendar styles */
+.calendar-container {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .calendar-container {
+    overflow-x: auto;
+  }
+  
+  .calendar-container button {
+    min-width: 80px;
+    font-size: var(--ds-text-xs);
+    padding: var(--ds-space-2);
+  }
+}
+
+/* Registration page responsive styles */
+.registration-type-buttons {
+  display: flex;
+  gap: var(--ds-space-4);
+  justify-content: center;
+}
+
+.registration-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ds-space-4);
+}
+
+.registration-tabs {
+  display: flex;
+  gap: var(--ds-space-4);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.registration-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.registration-form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.registration-page-container {
+  max-width: var(--ds-container);
+  margin: 0 auto;
+  padding: var(--ds-space-8) var(--ds-space-4);
+}
+
+@media (max-width: 768px) {
+  .registration-type-buttons {
+    flex-direction: column;
+  }
+  
+  .registration-type-buttons button {
+    max-width: 100% !important;
+    width: 100%;
+  }
+  
+  .registration-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .registration-tabs {
+    gap: var(--ds-space-2);
+  }
+  
+  .registration-tabs button {
+    padding: var(--ds-space-2) var(--ds-space-3) !important;
+    font-size: var(--ds-text-xs) !important;
+    white-space: nowrap;
+    min-width: fit-content;
+  }
+  
+  .registration-form-actions {
+    flex-direction: column !important;
+    gap: var(--ds-space-3);
+    align-items: stretch !important;
+  }
+  
+  .registration-form-actions button {
+    width: 100%;
+  }
+  
+  .registration-page-container {
+    padding: var(--ds-space-4) var(--ds-space-3);
+  }
+  
+  .registration-page-container h1 {
+    font-size: var(--ds-text-lg) !important;
+  }
+  
+  .registration-page-container h2 {
+    font-size: var(--ds-text-md) !important;
+  }
+  
+  /* Ensure list items in pricing card wrap properly on mobile */
+  .registration-page-container ul li {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+@media (max-width: 480px) {
+  .registration-page-container {
+    padding: var(--ds-space-3) var(--ds-space-2);
+  }
+  
+  .registration-type-buttons button {
+    padding: var(--ds-space-3) var(--ds-space-4) !important;
+    font-size: var(--ds-text-sm) !important;
+  }
+}
+
+/* Feed page responsive styles */
+@media (max-width: 1200px) {
+  /* Stack sidebars on smaller screens */
+  [style*="grid-template-columns: 280px 1fr 320px"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Hide right sidebar on mobile, show left sidebar */
+  [style*="grid-template-columns: 280px 1fr 320px"] > aside:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Stack all columns on mobile */
+  [style*="grid-template-columns: 280px 1fr 320px"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  [style*="grid-template-columns: 280px 1fr 320px"] > aside {
+    display: block !important;
+  }
+}
+
+/* Search page responsive styles */
+@media (max-width: 768px) {
+  [style*="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr))"] {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+  }
+  
+  [style*="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Bottom Navigation - Add padding to prevent content from being hidden */
+@media (max-width: 1024px) {
+  body {
+    padding-bottom: 56px;
+  }
+  
+  /* Adjust padding for safe area on devices with notches */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    body {
+      padding-bottom: calc(56px + env(safe-area-inset-bottom));
+    }
+  }
+}
+
+/* Dashboard responsive styles */
+.dashboard-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-profile-section {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .dashboard-hero {
+    height: 250px !important;
+  }
+  
+  .dashboard-profile-section {
+    bottom: -60px !important;
+  }
+  
+  .dashboard-profile-section img,
+  .dashboard-profile-section .ds-avatar {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  
+  .dashboard-profile-section h1 {
+    font-size: var(--ds-text-lg) !important;
+  }
+  
+  .dashboard-tabs {
+    margin-top: 80px !important;
+  }
+  
+  .dashboard-tabs button {
+    font-size: var(--ds-text-xs) !important;
+    padding: var(--ds-space-2) var(--ds-space-3) !important;
+  }
+  
+  .dashboard-content {
+    margin-top: var(--ds-space-4) !important;
+  }
+  
+  /* Stack stats grid on mobile */
+  .dashboard-content [style*="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-hero {
+    height: 200px !important;
+  }
+  
+  .dashboard-profile-section {
+    bottom: -50px !important;
+  }
+  
+  .dashboard-profile-section img,
+  .dashboard-profile-section .ds-avatar {
+    width: 100px !important;
+    height: 100px !important;
+    font-size: 32px !important;
+  }
+  
+  /* Single column stats on very small screens */
+  .dashboard-content [style*="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .dashboard-tabs {
+    margin-top: 70px !important;
+  }
+}
+
+/* Public Profile Page responsive styles */
+@media (max-width: 1024px) {
+  /* Stack main content and sidebar on tablet */
+  [style*="grid-template-columns: 300px 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Adjust profile hero section on mobile */
+  [style*="height: 400px"] {
+    height: 300px !important;
+  }
+  
+  [style*="bottom: -100px"] {
+    bottom: -80px !important;
+  }
+  
+  [style*="width: 180px"][style*="height: 180px"] {
+    width: 140px !important;
+    height: 140px !important;
+  }
+  
+  [style*="font-size: 56px"] {
+    font-size: 40px !important;
+  }
+}
+
+/* Search Page responsive styles */
+@media (max-width: 1024px) {
+  /* Tablet adjustments for search hero */
+  .search-hero-section {
+    min-height: 500px !important;
+    padding: var(--ds-space-12) var(--ds-space-4) var(--ds-space-8) !important;
+  }
+
+  /* Better image fit for tablet */
+  .search-hero-background {
+    background-size: cover !important;
+    background-position: center 30% !important;
+    object-fit: cover !important;
+  }
+
+  .search-hero-title {
+    font-size: var(--ds-text-2xl) !important;
+  }
+
+  .search-hero-subtitle {
+    font-size: var(--ds-text-md) !important;
+  }
+
+  /* Stack search filters on tablet */
+  .search-filters-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Adjust popular categories grid */
+  .popular-categories-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+  }
+
+  /* Adjust featured projects grid */
+  .featured-projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile adjustments for search hero */
+  .search-hero-section {
+    min-height: 450px !important;
+    padding: var(--ds-space-8) var(--ds-space-3) var(--ds-space-6) !important;
+  }
+
+  /* Better image fit for mobile - focus on center/upper portion */
+  .search-hero-background {
+    background-size: cover !important;
+    background-position: center 25% !important;
+    object-fit: cover !important;
+  }
+
+  .search-hero-title {
+    font-size: var(--ds-text-xl) !important;
+    margin-bottom: var(--ds-space-3) !important;
+  }
+
+  .search-hero-subtitle {
+    font-size: var(--ds-text-sm) !important;
+    margin-bottom: var(--ds-space-6) !important;
+    padding: 0 var(--ds-space-2) !important;
+  }
+
+  /* Search card adjustments */
+  .search-hero-card {
+    margin: 0 !important;
+    border-radius: var(--ds-radius-md) !important;
+  }
+
+  /* Search input adjustments */
+  .search-input-mobile input {
+    font-size: var(--ds-text-sm) !important;
+    padding: var(--ds-space-3) var(--ds-space-3) var(--ds-space-3) 40px !important;
+  }
+
+  /* Search select adjustments */
+  .search-select-mobile {
+    font-size: var(--ds-text-sm) !important;
+    padding: var(--ds-space-3) var(--ds-space-3) !important;
+  }
+
+  /* Search button adjustments */
+  .search-button-mobile {
+    font-size: var(--ds-text-sm) !important;
+    padding: var(--ds-space-3) var(--ds-space-4) !important;
+  }
+
+  /* Stack search filters on mobile */
+  .search-filters-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--ds-space-3) !important;
+  }
+
+  /* Single column for popular categories on mobile */
+  .popular-categories-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--ds-space-3) !important;
+  }
+
+  /* Single column for featured projects on mobile */
+  .featured-projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--ds-space-4) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Very small mobile adjustments */
+  .search-hero-section {
+    min-height: 400px !important;
+    padding: var(--ds-space-6) var(--ds-space-2) var(--ds-space-4) !important;
+  }
+
+  /* Better image fit for very small mobile screens */
+  .search-hero-background {
+    background-size: cover !important;
+    background-position: center 20% !important;
+    object-fit: cover !important;
+  }
+
+  .search-hero-title {
+    font-size: var(--ds-text-lg) !important;
+    padding: 0 var(--ds-space-2) !important;
+  }
+
+  .search-hero-subtitle {
+    font-size: var(--ds-text-xs) !important;
+    padding: 0 var(--ds-space-2) !important;
+  }
+
+  .search-hero-card {
+    margin: 0 var(--ds-space-2) !important;
+  }
+}
+
+
