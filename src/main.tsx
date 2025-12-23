@@ -5,6 +5,7 @@ import App from "./App";
 import "./styles/tokens.css";
 import "./styles/globals.css";
 import "./styles/components.css";
+import "./styles/registration-mobile-fix.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

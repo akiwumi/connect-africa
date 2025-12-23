@@ -17,6 +17,11 @@
     color var(--ds-dur-2) var(--ds-ease-standard),
     transform var(--ds-dur-1) var(--ds-ease-standard);
   user-select: none;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ds-btn:active {
@@ -74,12 +79,17 @@
   height: 40px;
   padding: 0;
   border-radius: var(--ds-radius-pill);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 /* Input */
 .ds-input-wrap {
   display: grid;
   gap: var(--ds-space-2);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .ds-label {
@@ -97,6 +107,9 @@
   color: var(--ds-text);
   transition: border-color var(--ds-dur-2) var(--ds-ease-standard),
     box-shadow var(--ds-dur-2) var(--ds-ease-standard);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .ds-input:focus {
@@ -114,6 +127,9 @@
   position: relative;
   display: grid;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .ds-input-icon {
@@ -147,6 +163,109 @@
   resize: vertical;
   transition: border-color var(--ds-dur-2) var(--ds-ease-standard),
     box-shadow var(--ds-dur-2) var(--ds-ease-standard);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mobile input sizing */
+@media (max-width: 768px) {
+  .ds-input {
+    height: 36px;
+    padding: 0 12px;
+    font-size: var(--ds-text-sm);
+  }
+  
+  .ds-input-icon {
+    left: 12px;
+  }
+  
+  .ds-input-row .ds-input {
+    padding-left: 36px;
+  }
+  
+  .ds-input-wrap select.ds-input {
+    padding-right: 36px;
+    background-position: right 12px center;
+  }
+  
+  .ds-input-wrap textarea {
+    min-height: 100px;
+    padding: var(--ds-space-2);
+    font-size: var(--ds-text-sm);
+  }
+  
+  .ds-label {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ds-input {
+    height: 32px;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+  
+  .ds-input-icon {
+    left: 10px;
+    width: 16px;
+    height: 16px;
+  }
+  
+  .ds-input-row .ds-input {
+    padding-left: 32px;
+  }
+  
+  .ds-input-wrap select.ds-input {
+    padding-right: 32px;
+    background-position: right 10px center;
+    font-size: 14px;
+  }
+  
+  .ds-input-wrap textarea {
+    min-height: 80px;
+    padding: var(--ds-space-2);
+    font-size: 14px;
+  }
+  
+  .ds-label {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .ds-input {
+    height: 30px;
+    padding: 0 8px;
+    font-size: 13px;
+  }
+  
+  .ds-input-icon {
+    left: 8px;
+    width: 14px;
+    height: 14px;
+  }
+  
+  .ds-input-row .ds-input {
+    padding-left: 28px;
+  }
+  
+  .ds-input-wrap select.ds-input {
+    padding-right: 28px;
+    background-position: right 8px center;
+    font-size: 13px;
+  }
+  
+  .ds-input-wrap textarea {
+    min-height: 70px;
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .ds-label {
+    font-size: 10px;
+  }
 }
 
 .ds-input-wrap textarea:focus {
@@ -318,6 +437,11 @@
 /* Card layouts */
 .ds-card-pad {
   padding: var(--ds-space-4);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 .ds-card-title {
   margin: 0;

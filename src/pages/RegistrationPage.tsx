@@ -117,7 +117,7 @@ export function RegistrationPage() {
     <div style={{ minHeight: "100vh", background: "var(--ds-bg)" }}>
       <Navbar />
 
-      <div className="registration-page-container">
+      <div className="registration-page-container" style={{ width: "100%", maxWidth: "100%", overflowX: "hidden", boxSizing: "border-box" }}>
         <div style={{ marginBottom: "var(--ds-space-6)", textAlign: "center" }}>
           <h1
             style={{
@@ -149,14 +149,14 @@ export function RegistrationPage() {
               <Button
                 variant={registrationType === "entrepreneur" ? "primary" : "secondary"}
                 onClick={() => setRegistrationType("entrepreneur")}
-                style={{ flex: "1", maxWidth: "300px" }}
+                className="registration-type-btn"
               >
                 Register as Entrepreneur
               </Button>
               <Button
                 variant={registrationType === "company" ? "primary" : "secondary"}
                 onClick={() => setRegistrationType("company")}
-                style={{ flex: "1", maxWidth: "300px" }}
+                className="registration-type-btn"
               >
                 Register as Company
               </Button>
@@ -332,7 +332,7 @@ export function RegistrationPage() {
                     window.location.hash = "#payment";
                   }
                 }}
-                style={{ display: "grid", gap: "var(--ds-space-4)" }}
+                className="registration-form"
               >
                 {registrationType === "entrepreneur" ? (
                   <Input
@@ -494,16 +494,18 @@ export function RegistrationPage() {
                       <p style={{ fontSize: "var(--ds-text-xs)", color: "var(--ds-text-muted)", marginBottom: "var(--ds-space-3)" }}>
                         Download the official Ghana Post GPS app to get your digital postal address.
                       </p>
-                      <div style={{ display: "flex", gap: "var(--ds-space-3)", flexWrap: "wrap" }}>
+                      <div className="app-download-list" style={{ display: "flex", flexDirection: "column", gap: "var(--ds-space-3)", width: "100%" }}>
                         <a
                           href="https://apps.apple.com/app/ghana-post-gps/id1234567890"
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="app-download-link"
                           style={{
                             display: "inline-flex",
                             alignItems: "center",
+                            justifyContent: "center",
                             gap: "var(--ds-space-2)",
-                            padding: "var(--ds-space-2) var(--ds-space-4)",
+                            padding: "var(--ds-space-3) var(--ds-space-4)",
                             background: "var(--ds-surface)",
                             border: "1px solid var(--ds-border)",
                             borderRadius: "var(--ds-radius-md)",
@@ -512,9 +514,8 @@ export function RegistrationPage() {
                             fontSize: "var(--ds-text-sm)",
                             fontWeight: 500,
                             transition: "all var(--ds-dur-2) var(--ds-ease-standard)",
-                            flex: "1 1 auto",
-                            minWidth: "140px",
-                            justifyContent: "center"
+                            width: "100%",
+                            boxSizing: "border-box"
                           }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.background = "var(--ds-primary-soft)";
@@ -532,11 +533,13 @@ export function RegistrationPage() {
                           href="https://play.google.com/store/apps/details?id=com.ghanapost.gps"
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="app-download-link"
                           style={{
                             display: "inline-flex",
                             alignItems: "center",
+                            justifyContent: "center",
                             gap: "var(--ds-space-2)",
-                            padding: "var(--ds-space-2) var(--ds-space-4)",
+                            padding: "var(--ds-space-3) var(--ds-space-4)",
                             background: "var(--ds-surface)",
                             border: "1px solid var(--ds-border)",
                             borderRadius: "var(--ds-radius-md)",
@@ -545,9 +548,8 @@ export function RegistrationPage() {
                             fontSize: "var(--ds-text-sm)",
                             fontWeight: 500,
                             transition: "all var(--ds-dur-2) var(--ds-ease-standard)",
-                            flex: "1 1 auto",
-                            minWidth: "140px",
-                            justifyContent: "center"
+                            width: "100%",
+                            boxSizing: "border-box"
                           }}
                           onMouseEnter={(e) => {
                             e.currentTarget.style.background = "var(--ds-primary-soft)";
@@ -593,12 +595,12 @@ export function RegistrationPage() {
                   </p>
                 </div>
 
-                <div className="registration-form-actions" style={{ marginTop: "var(--ds-space-4)" }}>
+                <div className="registration-form-actions">
                   <Button
                     type="button"
                     variant="ghost"
                     onClick={() => window.location.hash = "#profile"}
-                    style={{ fontSize: "var(--ds-text-xs)" }}
+                    className="form-action-btn"
                   >
                     → View Profile (Demo)
                   </Button>
@@ -606,6 +608,7 @@ export function RegistrationPage() {
                     type="submit"
                     variant="primary"
                     disabled={!canProceedToNextTab}
+                    className="form-action-btn"
                   >
                     Continue to Next Step
                   </Button>

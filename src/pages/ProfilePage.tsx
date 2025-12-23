@@ -620,9 +620,24 @@ Now serving over 500,000 users with a team of 75 employees. Processing over €5
             >
               {userType === "entrepreneur" ? profileData.name : profileData.companyName}
             </h1>
-            <Badge tone="success" style={{ fontSize: "var(--ds-text-xs)", padding: "4px 12px" }}>
-              Verified
-            </Badge>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "var(--ds-space-2)", flexWrap: "wrap" }}>
+              <Badge tone="success" style={{ fontSize: "var(--ds-text-xs)", padding: "4px 12px" }}>
+                Verified
+              </Badge>
+              {currentUserEmail && (
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  onClick={() => {
+                    window.location.hash = `#profile/${encodeURIComponent(currentUserEmail)}`;
+                  }}
+                  style={{ fontSize: "var(--ds-text-xs)", padding: "4px 12px" }}
+                >
+                  <Icon name="users" style={{ width: 14, height: 14, marginRight: "4px" }} />
+                  View Public Profile
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -763,6 +778,18 @@ Now serving over 500,000 users with a team of 75 employees. Processing over €5
                   <Button variant="ghost" onClick={() => setActiveTab("analytics")} style={{ width: "100%" }}>
                     View Analytics
                   </Button>
+                  {currentUserEmail && (
+                    <Button 
+                      variant="secondary" 
+                      onClick={() => {
+                        window.location.hash = `#profile/${encodeURIComponent(currentUserEmail)}`;
+                      }} 
+                      style={{ width: "100%" }}
+                      leftIcon={<Icon name="users" style={{ width: 16, height: 16 }} />}
+                    >
+                      View Public Profile
+                    </Button>
+                  )}
                 </div>
               </CardBody>
             </Card>
@@ -770,7 +797,7 @@ Now serving over 500,000 users with a team of 75 employees. Processing over €5
             {/* Submitted Projects Overview */}
             <div style={{ marginBottom: "var(--ds-space-6)" }}>
               <h2 style={{ fontSize: "var(--ds-text-lg)", fontWeight: 700, marginBottom: "var(--ds-space-4)", color: "var(--ds-text)" }}>
-                Your Projects
+                Submitted Projects
               </h2>
               <div style={{ display: "grid", gap: "var(--ds-space-4)" }}>
                 {submittedPitches.map((pitch) => {
@@ -785,13 +812,11 @@ Now serving over 500,000 users with a team of 75 employees. Processing over €5
                               <Badge tone={pitch.status === "approved" ? "success" : "warning"}>
                                 {pitch.status === "approved" ? "Approved" : "Pending Review"}
                               </Badge>
-                              {pitch.trending && (
-                                <Badge tone="primary" style={{ fontSize: "10px", padding: "2px 8px" }}>
-                                  Trending
+                              <Badge tone={pitch.trending ? "primary" : undefined} style={{ fontSize: "10px", padding: "2px 8px" }}>
+                                  {pitch.trending ? "Trending" : "Stable"}
                                 </Badge>
-                              )}
                               <Badge tone={pitch.popularity === "high" ? "success" : pitch.popularity === "medium" ? "warning" : undefined}>
-                                {pitch.popularity === "high" ? "High Popularity" : pitch.popularity === "medium" ? "Medium Popularity" : "Low Popularity"}
+                                {pitch.popularity === "high" ? "High" : pitch.popularity === "medium" ? "Medium" : "Low"}
                               </Badge>
                             </div>
                             <h3 style={{ fontSize: "var(--ds-text-md)", fontWeight: 700, marginBottom: "var(--ds-space-1)", color: "var(--ds-text)" }}>
@@ -969,7 +994,7 @@ Now serving over 500,000 users with a team of 75 employees. Processing over €5
                             </Badge>
                           </div>
                           <div style={{ fontSize: "var(--ds-text-xs)", color: "var(--ds-text-muted)", marginBottom: "var(--ds-space-1)" }}>
-                            {contact.type} • Connected {new Date(contact.date).toLocaleDateString()}
+                            {contact.type} • {contact.status === "connected" ? "Connected" : "Requested"} {new Date(contact.date).toLocaleDateString()}
                           </div>
                           {contact.notes && (
                             <div style={{ fontSize: "var(--ds-text-xs)", color: "var(--ds-text)", marginTop: "var(--ds-space-2)" }}>
@@ -1370,7 +1395,7 @@ Now serving over 500,000 users with a team of 75 employees. Processing over €5
                               </Badge>
                             </div>
                             <div style={{ fontSize: "var(--ds-text-xs)", color: "var(--ds-text-muted)", marginBottom: "var(--ds-space-2)" }}>
-                              {contact.type} • Connected {new Date(contact.date).toLocaleDateString()}
+                              {contact.type} • {contact.status === "connected" ? "Connected" : "Requested"} {new Date(contact.date).toLocaleDateString()}
                             </div>
                             {contact.notes && (
                               <div style={{ fontSize: "var(--ds-text-xs)", color: "var(--ds-text)", padding: "var(--ds-space-2)", background: "var(--ds-surface-2)", borderRadius: "var(--ds-radius-sm)", marginTop: "var(--ds-space-2)" }}>

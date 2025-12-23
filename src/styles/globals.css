@@ -4,17 +4,44 @@
   box-sizing: border-box;
 }
 
-html,
-body {
+html {
   height: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  padding: 0;
   font-family: var(--ds-font-sans);
   color: var(--ds-text);
   background: var(--ds-bg);
   line-height: var(--ds-leading-normal);
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent any element from causing horizontal overflow */
+* {
+  max-width: 100%;
+}
+
+/* Exception for specific elements that need to overflow intentionally */
+img,
+svg,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
 }
 
 a {
@@ -38,6 +65,10 @@ input {
   border: 1px solid var(--ds-border);
   border-radius: var(--ds-radius-md);
   box-shadow: var(--ds-shadow-1);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .ds-muted {
@@ -142,6 +173,9 @@ input {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--ds-space-4);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .registration-tabs {
@@ -161,6 +195,38 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: var(--ds-space-4);
+  gap: var(--ds-space-3);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.payment-form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--ds-space-4);
+  gap: var(--ds-space-3);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.registration-type-btn {
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.form-action-btn {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .registration-page-container {
@@ -172,15 +238,55 @@ input {
 @media (max-width: 768px) {
   .registration-type-buttons {
     flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    gap: var(--ds-space-2);
   }
   
-  .registration-type-buttons button {
+  .registration-type-btn,
+  .registration-type-buttons button,
+  .registration-type-buttons .ds-btn {
     max-width: 100% !important;
-    width: 100%;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: var(--ds-space-2) var(--ds-space-3) !important;
+    font-size: var(--ds-text-xs) !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
   }
   
   .registration-form-grid {
     grid-template-columns: 1fr !important;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Shrink registration form action buttons */
+  .form-action-btn,
+  .registration-form-actions button,
+  .registration-form-actions .ds-btn {
+    padding: var(--ds-space-2) var(--ds-space-3) !important;
+    font-size: var(--ds-text-xs) !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Shrink payment form action buttons */
+  .payment-form-actions .form-action-btn,
+  .payment-form-actions button,
+  .payment-form-actions .ds-btn {
+    padding: var(--ds-space-2) var(--ds-space-3) !important;
+    font-size: var(--ds-text-xs) !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
   
   .registration-tabs {
@@ -194,14 +300,23 @@ input {
     min-width: fit-content;
   }
   
-  .registration-form-actions {
+  .registration-form-actions,
+  .payment-form-actions {
     flex-direction: column !important;
-    gap: var(--ds-space-3);
+    gap: var(--ds-space-2) !important;
     align-items: stretch !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
   
-  .registration-form-actions button {
-    width: 100%;
+  .registration-form-actions button,
+  .registration-form-actions .ds-btn,
+  .payment-form-actions button,
+  .payment-form-actions .ds-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
   
   .registration-page-container {
@@ -228,9 +343,398 @@ input {
     padding: var(--ds-space-3) var(--ds-space-2);
   }
   
+  .registration-type-btn,
+  .registration-type-buttons .ds-btn,
   .registration-type-buttons button {
-    padding: var(--ds-space-3) var(--ds-space-4) !important;
+    padding: var(--ds-space-2) var(--ds-space-2) !important;
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .form-action-btn,
+  .registration-form-actions .ds-btn,
+  .registration-form-actions button,
+  .payment-form-actions .ds-btn,
+  .payment-form-actions button {
+    padding: var(--ds-space-2) var(--ds-space-2) !important;
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .registration-type-btn,
+  .form-action-btn {
+    padding: 8px 10px !important;
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* Base responsive form styles - apply to all screen sizes */
+.registration-page-container,
+.payment-page-container {
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  padding-left: var(--ds-space-4);
+  padding-right: var(--ds-space-4);
+  margin: 0;
+}
+
+/* Ensure all buttons respect container boundaries */
+button,
+.ds-btn {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Button containers should wrap and constrain */
+[class*="actions"],
+[class*="button-group"],
+[style*="display: flex"][style*="button"] {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.registration-page-container form,
+.payment-page-container form {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.payment-form-grid-2 {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Calendar responsive styles */
+.calendar-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.calendar-date-navigation {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.calendar-date-navigation button {
+  flex-shrink: 0;
+  min-width: 100px;
+}
+
+.calendar-time-slots {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* App download list - always vertical */
+.app-download-list {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.app-download-link {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Payment page responsive styles */
+@media (max-width: 768px) {
+  /* Ensure payment form grids stack on mobile */
+  .payment-form-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Stack payment action buttons on mobile */
+  .payment-form-actions {
+    flex-direction: column !important;
+    gap: var(--ds-space-3);
+    align-items: stretch !important;
+  }
+  
+  .payment-form-actions button {
+    width: 100%;
+    min-width: unset !important;
+  }
+  
+  /* Ensure payment container doesn't overflow */
+  .payment-page-container {
+    padding: var(--ds-space-4) var(--ds-space-3) !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Ensure all inputs and form elements fit on mobile */
+  .ds-input-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  input,
+  select,
+  textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Ensure cards and containers don't overflow */
+  .ds-card,
+  [class*="Card"] {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .ds-card-pad {
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+  }
+  
+  /* Ensure forms within cards stay contained */
+  .ds-card form,
+  .ds-card-pad form {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure all inputs within cards stay contained */
+  .ds-card .ds-input-wrap,
+  .ds-card-pad .ds-input-wrap,
+  .ds-card input,
+  .ds-card select,
+  .ds-card textarea,
+  .ds-card-pad input,
+  .ds-card-pad select,
+  .ds-card-pad textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Shrink inputs within cards on mobile */
+  .ds-card .ds-input,
+  .ds-card-pad .ds-input,
+  .ds-card input:not([type="checkbox"]):not([type="radio"]),
+  .ds-card-pad input:not([type="checkbox"]):not([type="radio"]) {
+    height: 36px !important;
+    padding: 0 12px !important;
     font-size: var(--ds-text-sm) !important;
+  }
+  
+  .ds-card .ds-input-row .ds-input,
+  .ds-card-pad .ds-input-row .ds-input {
+    padding-left: 36px !important;
+  }
+  
+  .ds-card .ds-input-wrap select.ds-input,
+  .ds-card-pad .ds-input-wrap select.ds-input {
+    padding-right: 36px !important;
+  }
+  
+  .ds-card .ds-input-wrap textarea,
+  .ds-card-pad .ds-input-wrap textarea {
+    min-height: 100px !important;
+    padding: var(--ds-space-2) !important;
+  }
+  
+  .ds-card .ds-label,
+  .ds-card-pad .ds-label {
+    font-size: 11px !important;
+  }
+  
+  /* Ensure all buttons within cards stay contained */
+  .ds-card button,
+  .ds-card-pad button,
+  .ds-card .ds-btn,
+  .ds-card-pad .ds-btn {
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Ensure button containers don't overflow */
+  .ds-card .registration-form-actions,
+  .ds-card-pad .registration-form-actions,
+  .ds-card .payment-form-actions,
+  .ds-card-pad .payment-form-actions,
+  .ds-card [class*="actions"],
+  .ds-card-pad [class*="actions"] {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent horizontal scrolling on all pages */
+  .registration-page-container,
+  .payment-page-container {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-page-container,
+  .registration-page-container {
+    padding: var(--ds-space-3) var(--ds-space-2) !important;
+  }
+  
+  /* Ensure card padding is reduced on mobile */
+  .ds-card-pad {
+    padding: var(--ds-space-3) !important;
+  }
+  
+  /* Ensure forms and inputs stay within card boundaries */
+  .ds-card,
+  .ds-card-pad {
+    overflow-x: hidden;
+  }
+  
+  .ds-card form,
+  .ds-card-pad form {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure inputs within cards don't overflow */
+  .ds-card .ds-input-wrap,
+  .ds-card-pad .ds-input-wrap {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  /* Further shrink inputs within cards on small screens */
+  .ds-card .ds-input,
+  .ds-card-pad .ds-input,
+  .ds-card input:not([type="checkbox"]):not([type="radio"]),
+  .ds-card-pad input:not([type="checkbox"]):not([type="radio"]) {
+    height: 32px !important;
+    padding: 0 10px !important;
+    font-size: 14px !important;
+  }
+  
+  .ds-card .ds-input-icon,
+  .ds-card-pad .ds-input-icon {
+    left: 10px !important;
+    width: 16px !important;
+    height: 16px !important;
+  }
+  
+  .ds-card .ds-input-row .ds-input,
+  .ds-card-pad .ds-input-row .ds-input {
+    padding-left: 32px !important;
+  }
+  
+  .ds-card .ds-input-wrap select.ds-input,
+  .ds-card-pad .ds-input-wrap select.ds-input {
+    padding-right: 32px !important;
+    font-size: 14px !important;
+  }
+  
+  .ds-card .ds-input-wrap textarea,
+  .ds-card-pad .ds-input-wrap textarea {
+    min-height: 80px !important;
+    padding: var(--ds-space-2) !important;
+    font-size: 14px !important;
+  }
+  
+  .ds-card .ds-label,
+  .ds-card-pad .ds-label {
+    font-size: 10px !important;
+  }
+  
+  /* Ensure buttons within cards don't overflow on small screens */
+  .ds-card button,
+  .ds-card-pad button,
+  .ds-card .ds-btn,
+  .ds-card-pad .ds-btn {
+    max-width: 100%;
+    width: auto;
+    min-width: 0;
+    flex-shrink: 1;
+    padding: var(--ds-space-2) var(--ds-space-3) !important;
+    font-size: var(--ds-text-xs) !important;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+  }
+  
+  /* Ensure button action containers wrap properly */
+  .ds-card .registration-form-actions,
+  .ds-card-pad .registration-form-actions,
+  .ds-card .payment-form-actions,
+  .ds-card-pad .payment-form-actions {
+    flex-wrap: wrap !important;
+    gap: var(--ds-space-2) !important;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .ds-card .registration-form-actions button,
+  .ds-card-pad .registration-form-actions button,
+  .ds-card .registration-form-actions .ds-btn,
+  .ds-card-pad .registration-form-actions .ds-btn,
+  .ds-card .payment-form-actions button,
+  .ds-card-pad .payment-form-actions button,
+  .ds-card .payment-form-actions .ds-btn,
+  .ds-card-pad .payment-form-actions .ds-btn {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: calc(50% - var(--ds-space-1));
+    box-sizing: border-box;
+    padding: var(--ds-space-2) var(--ds-space-2) !important;
+    font-size: 11px !important;
+  }
+  
+  /* Registration type buttons specific styling */
+  .ds-card .registration-type-buttons button,
+  .ds-card-pad .registration-type-buttons button,
+  .ds-card .registration-type-buttons .ds-btn,
+  .ds-card-pad .registration-type-buttons .ds-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0;
+  }
+  
+  /* Ensure all button containers within cards are constrained */
+  .ds-card [style*="display: flex"],
+  .ds-card-pad [style*="display: flex"] {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  .ds-card [style*="display: flex"] button,
+  .ds-card-pad [style*="display: flex"] button {
+    max-width: 100%;
+    flex-shrink: 1;
   }
 }
 

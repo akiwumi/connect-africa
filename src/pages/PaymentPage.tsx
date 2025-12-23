@@ -76,7 +76,7 @@ export function PaymentPage() {
     <div style={{ minHeight: "100vh", background: "var(--ds-bg)" }}>
       <Navbar />
 
-      <div style={{ maxWidth: "800px", margin: "0 auto", padding: "var(--ds-space-8) var(--ds-space-4)" }}>
+      <div className="payment-page-container" style={{ maxWidth: "800px", margin: "0 auto", padding: "var(--ds-space-8) var(--ds-space-4)", width: "100%", boxSizing: "border-box", overflowX: "hidden" }}>
         <div style={{ marginBottom: "var(--ds-space-6)", textAlign: "center" }}>
           <h1
             style={{
@@ -151,7 +151,7 @@ export function PaymentPage() {
         {/* Payment Form */}
         <Card style={{ opacity: paymentSuccess ? 0.6 : 1, pointerEvents: paymentSuccess ? "none" : "auto" }}>
           <CardBody>
-            <form onSubmit={handleSubmit} style={{ display: "grid", gap: "var(--ds-space-4)" }}>
+            <form onSubmit={handleSubmit} className="payment-form">
               <h2 style={{ fontSize: "var(--ds-text-lg)", fontWeight: 700, marginBottom: "var(--ds-space-2)", color: "var(--ds-text)" }}>
                 Payment Details
               </h2>
@@ -189,7 +189,7 @@ export function PaymentPage() {
                 <strong>Demo Mode:</strong> Form is pre-filled with dummy payment data for testing purposes.
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "var(--ds-space-4)" }}>
+              <div className="payment-form-grid-2" style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "var(--ds-space-4)", width: "100%", maxWidth: "100%", boxSizing: "border-box" }}>
                 <Input
                   label="Expiry Date *"
                   name="expiryDate"
@@ -225,7 +225,7 @@ export function PaymentPage() {
                 required
               />
 
-              <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "var(--ds-space-4)" }}>
+              <div className="payment-form-grid-2" style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "var(--ds-space-4)", width: "100%", maxWidth: "100%", boxSizing: "border-box" }}>
                 <Input
                   label="City *"
                   name="billingCity"
@@ -263,11 +263,12 @@ export function PaymentPage() {
                 </div>
               </div>
 
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "var(--ds-space-4)" }}>
+              <div className="payment-form-actions">
                 <Button
                   type="button"
                   variant="ghost"
                   onClick={() => window.history.back()}
+                  className="form-action-btn"
                 >
                   ← Back
                 </Button>
@@ -275,7 +276,7 @@ export function PaymentPage() {
                   type="submit"
                   variant="primary"
                   disabled={!isFormValid || isProcessing}
-                  style={{ minWidth: "200px" }}
+                  className="form-action-btn"
                 >
                   {isProcessing ? "Processing..." : "Pay €1,000"}
                 </Button>

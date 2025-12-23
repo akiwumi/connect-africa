@@ -47,15 +47,20 @@ export function Calendar({ slots, selectedSlot, onSelectSlot }: CalendarProps) {
   const getSlotKey = (date: string, time: string) => `${date}T${time}`;
 
   return (
-    <div className="calendar-container">
+    <div className="calendar-container" style={{ width: "100%", maxWidth: "100%", boxSizing: "border-box" }}>
       {/* Date Navigation */}
       <div
+        className="calendar-date-navigation"
         style={{
           display: "flex",
           gap: "var(--ds-space-2)",
           marginBottom: "var(--ds-space-4)",
           overflowX: "auto",
-          paddingBottom: "var(--ds-space-2)"
+          paddingBottom: "var(--ds-space-2)",
+          width: "100%",
+          boxSizing: "border-box",
+          scrollbarWidth: "thin",
+          WebkitOverflowScrolling: "touch"
         }}
       >
         {dates.map((date) => (
@@ -123,10 +128,14 @@ export function Calendar({ slots, selectedSlot, onSelectSlot }: CalendarProps) {
       {/* Time Slots Grid */}
       {selectedDate && slotsByDate[selectedDate] && (
         <div
+          className="calendar-time-slots"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))",
-            gap: "var(--ds-space-2)"
+            gridTemplateColumns: "repeat(auto-fill, minmax(80px, 1fr))",
+            gap: "var(--ds-space-2)",
+            width: "100%",
+            maxWidth: "100%",
+            boxSizing: "border-box"
           }}
         >
           {slotsByDate[selectedDate]

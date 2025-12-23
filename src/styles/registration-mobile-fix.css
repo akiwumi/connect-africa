@@ -1,0 +1,245 @@
+/* Aggressive mobile fixes for registration and payment forms */
+/* Ensure everything fits within viewport and cards */
+
+@media (max-width: 768px) {
+  /* Force all containers to respect viewport */
+  .registration-page-container,
+  .payment-page-container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Force cards to be contained */
+  .ds-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    overflow: hidden !important;
+  }
+  
+  .ds-card-pad {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 12px !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Force forms to be contained */
+  .registration-form,
+  .payment-form,
+  .registration-page-container form,
+  .payment-page-container form {
+    display: grid !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Force all inputs to shrink - specific to registration and payment pages */
+  .registration-page-container input,
+  .registration-page-container select,
+  .registration-page-container textarea,
+  .registration-page-container .ds-input,
+  .payment-page-container input,
+  .payment-page-container select,
+  .payment-page-container textarea,
+  .payment-page-container .ds-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    font-size: 14px !important;
+    height: 32px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  .registration-page-container textarea,
+  .payment-page-container textarea {
+    min-height: 80px !important;
+    padding: 8px !important;
+    font-size: 14px !important;
+    height: auto !important;
+  }
+  
+  .registration-page-container .ds-input-wrap,
+  .payment-page-container .ds-input-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Input grids */
+  .registration-form-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 12px !important;
+  }
+  
+  .payment-form-grid-2 {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 12px !important;
+  }
+  
+  /* Force all buttons to shrink and fit */
+  .registration-page-container button,
+  .payment-page-container button,
+  .registration-page-container .ds-btn,
+  .payment-page-container .ds-btn,
+  .registration-type-btn,
+  .form-action-btn,
+  .registration-type-buttons button,
+  .registration-type-buttons .ds-btn,
+  .registration-form-actions button,
+  .registration-form-actions .ds-btn,
+  .payment-form-actions button,
+  .payment-form-actions .ds-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    line-height: 1.3 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    flex-shrink: 1 !important;
+  }
+  
+  /* Button containers - force column layout */
+  .registration-type-buttons,
+  .registration-form-actions,
+  .payment-form-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    align-items: stretch !important;
+  }
+  
+  /* Calendar fixes */
+  .calendar-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  
+  .calendar-date-navigation {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    padding-bottom: 8px !important;
+  }
+  
+  .calendar-time-slots {
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+  
+  .calendar-time-slots button {
+    padding: 8px 4px !important;
+    font-size: 11px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .registration-page-container,
+  .payment-page-container {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  
+  .ds-card-pad {
+    padding: 10px !important;
+  }
+  
+  input,
+  select,
+  .ds-input {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 13px !important;
+    height: 30px !important;
+  }
+  
+  textarea {
+    padding: 6px !important;
+    font-size: 13px !important;
+    min-height: 70px !important;
+  }
+  
+  button,
+  .ds-btn {
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+  }
+  
+  .calendar-time-slots {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 6px !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .registration-page-container,
+  .payment-page-container {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
+  
+  .ds-card-pad {
+    padding: 8px !important;
+  }
+  
+  input,
+  select,
+  .ds-input {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    font-size: 12px !important;
+    height: 28px !important;
+  }
+  
+  button,
+  .ds-btn {
+    padding: 6px 8px !important;
+    font-size: 10px !important;
+  }
+  
+  .calendar-time-slots {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
